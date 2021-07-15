@@ -15,6 +15,10 @@ const StudentSchema = new Schema({
     // articleCount: Number, //deleting this so we can use a virtual type bc we dont want to save it to the db (idk why)
     grade: Number,
     articles: [ArticleSchema], //the array tells mongo to expect a subdoc
+    articleBlog: [{
+        type: Schema.Types.ObjectId, //idk wat this is
+        ref: 'articleBlog' //this refers to the name of the collection
+    }]
 })
 
 StudentSchema.virtual('articleCount').get(function () {//You can define these virtual properties that will behave like normal mongoose ones (as studentName.articleCount = #ofArticles, just as expected)
